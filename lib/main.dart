@@ -1,13 +1,14 @@
-// ignore_for_file: prefer_const_con
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:paw_prints/Pages/HomePage.dart';
-
+import 'package:paw_prints/firebase_options.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,9 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      darkTheme: ThemeData(
-        primaryColor: const Color.fromARGB(255, 236, 219, 67),
-        brightness: Brightness.dark,
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(color: Color(0xFF21899C)),
+        primaryColor: const Color(0xFF21899C),
       ),
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
